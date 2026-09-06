@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        ShopEasy - Online Shopping
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="./CSS/js/style.css">
+
+
+    <style>
+
+        /* =====================================================
+           HERO SECTION
+           ===================================================== */
+
+        .hero {
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+        }
+
+
+        .hero h2 {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .hero p {
+
+            font-size: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .hero-btn {
+
+            display: inline-block;
+
+            padding: 12px 25px;
+
+            background: #2878f0;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+
+        }
+
+
+        .hero-btn:hover {
+
+            background: #155dcc;
+
+        }
+
+
+        /* =====================================================
+           CATEGORY SECTION
+           ===================================================== */
+
+        .category-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            max-width: 1000px;
+
+            margin: 30px auto;
+
+            padding: 0 20px;
+
+        }
+
+
+        .category-card {
+
+            background: white;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 12px
+                rgba(0, 0, 0, 0.1);
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .category-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+        .category-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =====================================================
+           ABOUT
+           ===================================================== */
+
+        .about-section {
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+        }
+
+
+        /* =====================================================
+           CONTACT
+           ===================================================== */
+
+        .contact-section {
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION BUTTONS
+           ===================================================== */
+
+        nav button {
+
+            border: none;
+
+            background: none;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-family: inherit;
+
+            margin-left: 12px;
+
+        }
+
+
+        #loginNavButton {
+
+            color: #2878f0;
+
+        }
+
+
+        #signupNavButton {
+
+            color: #28a745;
+
+        }
+
+
+        /* =====================================================
+           USER ACCOUNT
+           ===================================================== */
+
+        #userAccount {
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-left: 15px;
+
+        }
+
+
+        #userName {
+
+            font-weight: bold;
+
+        }
+
+
+        #userAccount button {
+
+            background: #dc3545;
+
+            color: white;
+
+            border: none;
+
+            padding: 7px 12px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+        }
+
+
+        #userAccount button:hover {
+
+            background: #c82333;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .category-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .category-container {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header>
+
+
+        <h1 class="logo">
+            🛒 ShopEasy
+        </h1>
+
+
+        <nav>
+
+
+            <!-- HOME -->
+
+            <a href="./index.html">
+                Home
+            </a>
+
+
+            <!-- PRODUCTS -->
+
+            <a href="./CSS/js/products.html">
+                Products
+            </a>
+
+
+            <!-- CART -->
+
+            <a href="./cart.html">
+
+                Cart 🛒
+
+                <span id="cartCount">
+                    0
+                </span>
+
+            </a>
+
+
+            <!-- MY ORDERS -->
+
+            <a href="./CSS/js/orders.html">
+                My Orders
+            </a>
+
+
+            <!-- LOGIN -->
+
+            <button
+                type="button"
+                id="loginNavButton"
+                onclick="showLogin()">
+
+                Login
+
+            </button>
+
+
+            <!-- SIGN UP -->
+
+            <button
+                type="button"
+                id="signupNavButton"
+                onclick="showSignup()">
+
+                Sign Up
+
+            </button>
+
+
+            <!-- LOGGED-IN USER -->
+
+            <div
+                id="userAccount"
+                style="display: none;">
+
+                <span id="userName">
+                    User
+                </span>
+
+
+                <button
+                    type="button"
+                    onclick="logout()">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="hero">
+
+
+            <h2>
+                Welcome to ShopEasy
+            </h2>
+
+
+            <p>
+                Your one-stop online shopping destination
+            </p>
+
+
+            <a
+                href="./CSS/js/products.html"
+                class="hero-btn">
+
+                Shop Now
+
+            </a>
+
+
+        </section>
+
+
+        <!-- =================================================
+             SHOP BY CATEGORY
+             ================================================= -->
+
+        <section class="section">
+
+
+            <h2>
+                Shop by Category
+            </h2>
+
+
+            <div class="category-container">
+
+
+                <!-- ELECTRONICS -->
+
+                <div
+                    class="category-card"
+                    onclick="goToCategory('Electronics')">
+
+
+                    <div class="category-icon">
+                        📱
+                    </div>
+
+
+                    <h3>
+                        Electronics
+                    </h3>
+
+
+                    <p>
+                        Mobiles, laptops and more
+                    </p>
+
+
+                </div>
+
+
+                <!-- CLOTHING -->
+
+                <div
+                    class="category-card"
+                    onclick="goToCategory('Clothing')">
+
+
+                    <div class="category-icon">
+                        👕
+                    </div>
+
+
+                    <h3>
+                        Clothing
+                    </h3>
+
+
+                    <p>
+                        Fashion for everyone
+                    </p>
+
+
+                </div>
+
+
+                <!-- SHOES -->
+
+                <div
+                    class="category-card"
+                    onclick="goToCategory('Shoes')">
+
+
+                    <div class="category-icon">
+                        👟
+                    </div>
+
+
+                    <h3>
+                        Shoes
+                    </h3>
+
+
+                    <p>
+                        Stylish and comfortable shoes
+                    </p>
+
+
+                </div>
+
+
+                <!-- BOOKS -->
+
+                <div
+                    class="category-card"
+                    onclick="goToCategory('Books')">
+
+
+                    <div class="category-icon">
+                        📚
+                    </div>
+
+
+                    <h3>
+                        Books
+                    </h3>
+
+
+                    <p>
+                        Books for learning and reading
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FEATURED PRODUCTS
+             ================================================= -->
+
+        <section class="section">
+
+
+            <h2>
+                Featured Products
+            </h2>
+
+
+            <div
+                id="productContainer"
+                class="product-container">
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ABOUT SHOP EASY
+             ================================================= -->
+
+        <section
+            class="about-section"
+            id="about">
+
+
+            <h2>
+                About ShopEasy
+            </h2>
+
+
+            <p>
+
+                ShopEasy is a simple full-stack
+                e-commerce web application that
+                provides customers with a convenient
+                online shopping experience.
+
+            </p>
+
+
+            <p>
+
+                Users can browse products, view product
+                details, add products to their cart,
+                create an account, login and place orders.
+
+            </p>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT
+             ================================================= -->
+
+        <section
+            class="contact-section"
+            id="contact">
+
+
+            <h2>
+                Contact Us
+            </h2>
+
+
+            <p>
+                📧 Email: support@shopeasy.com
+            </p>
+
+
+            <p>
+                📞 Phone: +91 98765 43210
+            </p>
+
+
+            <p>
+                📍 India
+            </p>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         LOGIN MODAL
+         ===================================================== -->
+
+    <div
+        id="loginModal"
+        class="modal">
+
+
+        <div class="modal-content">
+
+
+            <span
+                class="close"
+                onclick="closeLogin()">
+
+                &times;
+
+            </span>
+
+
+            <h2>
+                Login
+            </h2>
+
+
+            <p>
+                Login to your ShopEasy account
+            </p>
+
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter Email"
+                required>
+
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter Password"
+                required>
+
+
+            <button
+                type="button"
+                onclick="login()">
+
+                Login
+
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="form-message">
+
+            </p>
+
+
+            <p>
+
+                Don't have an account?
+
+
+                <button
+                    type="button"
+                    class="switch-button"
+                    onclick="switchToSignup()">
+
+                    Sign Up
+
+                </button>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SIGNUP MODAL
+         ===================================================== -->
+
+    <div
+        id="signupModal"
+        class="modal">
+
+
+        <div class="modal-content">
+
+
+            <span
+                class="close"
+                onclick="closeSignup()">
+
+                &times;
+
+            </span>
+
+
+            <h2>
+                Create Account
+            </h2>
+
+
+            <p>
+                Create your ShopEasy account
+            </p>
+
+
+            <input
+                type="text"
+                id="signupName"
+                placeholder="Enter Name"
+                required>
+
+
+            <input
+                type="email"
+                id="signupEmail"
+                placeholder="Enter Email"
+                required>
+
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Enter Password"
+                required>
+
+
+            <button
+                type="button"
+                onclick="signup()">
+
+                Create Account
+
+            </button>
+
+
+            <p
+                id="signupMessage"
+                class="form-message">
+
+            </p>
+
+
+            <p>
+
+                Already have an account?
+
+
+                <button
+                    type="button"
+                    class="switch-button"
+                    onclick="switchToLogin()">
+
+                    Login
+
+                </button>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+
+        <p>
+            © 2026 ShopEasy. All Rights Reserved.
+        </p>
+
+
+    </footer>
+
+
+    <!-- =====================================================
+         MAIN JAVASCRIPT
+         ===================================================== -->
+
+    <script src="./CSS/js/main.js"></script>
+
+
+    <!-- =====================================================
+         CATEGORY NAVIGATION
+         ===================================================== -->
+
+    <script>
+
+        function goToCategory(category) {
+
+            window.location.href =
+                "./CSS/js/products.html?category=" +
+                encodeURIComponent(category);
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
